@@ -1,6 +1,6 @@
 [submodule "RavenAIService"]
 	path = RavenAIService
-	url = ssh://git@10.60.11.3:2223/guoliang/log-staging-service.git
+	url = git@github.com:visiontrail/RavenAIService.git
 	branch = main
 
 [submodule "RavenClient"]
