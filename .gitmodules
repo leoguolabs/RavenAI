@@ -7,3 +7,6 @@
 	path = RavenClient
 	url = git@github.com:leoguolabs/RavenClient.git
 	branch = Raven-main
+[submodule "Magpie"]
+	path = Magpie
+	url = git@github.com:leoguolabs/magpie.git
