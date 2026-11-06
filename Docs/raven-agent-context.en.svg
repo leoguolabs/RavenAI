@@ -1,227 +1,117 @@
-<svg viewBox="0 0 1534 726" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="RavenAI Service · Agent context layering and assembly (architecture diagram)">
-  <defs>
-    <style>
-      @font-face{font-family:'JetBrains Mono';font-weight:400;src:local('JetBrains Mono'),local('JetBrainsMono-Regular')}
-      @font-face{font-family:'JetBrains Mono';font-weight:600;src:local('JetBrains Mono'),local('JetBrainsMono-Regular')}
-      @font-face{font-family:'JetBrains Mono';font-weight:700;src:local('JetBrains Mono'),local('JetBrainsMono-Regular')}
-      svg{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',monospace}
-      :root,svg{
-        --bg:#020617;--grid:#1e293b;--text:#ffffff;--text-muted:#94a3b8;--text-dim:#475569;
-        --mask:#0f172a;--arrow:#64748b;--arrow-emphasis:#34d399;
-        --frontend-fill:rgba(8,51,68,.4);--frontend-stroke:#22d3ee;
-        --backend-fill:rgba(6,78,59,.4);--backend-stroke:#34d399;
-        --database-fill:rgba(76,29,149,.4);--database-stroke:#a78bfa;
-        --cloud-fill:rgba(120,53,15,.3);--cloud-stroke:#fbbf24;
-        --security-fill:rgba(136,19,55,.4);--security-stroke:#fb7185;
-        --messagebus-fill:rgba(251,146,60,.3);--messagebus-stroke:#fb923c;
-        --external-fill:rgba(30,41,59,.5);--external-stroke:#94a3b8;
-        --lane-fill:rgba(15,23,42,.22);--lane-stroke:#334155
-      }
-      @media(prefers-color-scheme:light){:root,svg{
-        --bg:#f8fafc;--grid:#e2e8f0;--text:#0f172a;--text-muted:#64748b;
-        --mask:#ffffff;--arrow:#94a3b8;--arrow-emphasis:#059669;
-        --frontend-fill:rgba(34,211,238,.15);--frontend-stroke:#0891b2;
-        --backend-fill:rgba(52,211,153,.18);--backend-stroke:#059669;
-        --database-fill:rgba(167,139,250,.2);--database-stroke:#7c3aed;
-        --cloud-fill:rgba(251,191,36,.18);--cloud-stroke:#d97706;
-        --security-fill:rgba(251,113,133,.15);--security-stroke:#e11d48;
-        --messagebus-fill:rgba(251,146,60,.15);--messagebus-stroke:#ea580c;
-        --external-fill:rgba(148,163,184,.18);--external-stroke:#64748b;
-        --lane-fill:rgba(248,250,252,.65);--lane-stroke:#cbd5e1
-      }}
-      .c-bg{fill:var(--bg)}
-      .c-grid{stroke:var(--grid);fill:none}
-      .c-mask{fill:var(--mask);stroke:none}
-      .c-frontend{fill:var(--frontend-fill);stroke:var(--frontend-stroke)}
-      .c-backend{fill:var(--backend-fill);stroke:var(--backend-stroke)}
-      .c-database{fill:var(--database-fill);stroke:var(--database-stroke)}
-      .c-cloud{fill:var(--cloud-fill);stroke:var(--cloud-stroke)}
-      .c-security{fill:var(--security-fill);stroke:var(--security-stroke)}
-      .c-messagebus{fill:var(--messagebus-fill);stroke:var(--messagebus-stroke)}
-      .c-external{fill:var(--external-fill);stroke:var(--external-stroke)}
-      .t-primary{fill:var(--text)}
-      .t-muted{fill:var(--text-muted)}
-      .t-dim{fill:var(--text-dim)}
-      .t-frontend{fill:var(--frontend-stroke)}
-      .t-backend{fill:var(--backend-stroke)}
-      .t-database{fill:var(--database-stroke)}
-      .t-cloud{fill:var(--cloud-stroke)}
-      .t-security{fill:var(--security-stroke)}
-      .t-messagebus{fill:var(--messagebus-stroke)}
-      .t-external{fill:var(--external-stroke)}
-      .a-default{stroke:var(--arrow);fill:none}
-      .a-emphasis{stroke:var(--arrow-emphasis);fill:none}
-      .a-security{stroke:var(--security-stroke);fill:none;stroke-dasharray:5,5}
-      .a-dashed{stroke:var(--database-stroke);fill:none;stroke-dasharray:4,4}
-      .m-default{fill:var(--arrow)}
-      .m-emphasis{fill:var(--arrow-emphasis)}
-      .m-security{fill:var(--security-stroke)}
-      .m-dashed{fill:var(--database-stroke)}
-      .c-security-group{fill:transparent;stroke:var(--security-stroke);stroke-dasharray:4,4}
-      .c-region{fill:rgba(251,191,36,.05);stroke:var(--cloud-stroke);stroke-dasharray:8,4}
-      .c-lane{fill:var(--lane-fill);stroke:var(--lane-stroke);stroke-dasharray:6,6}
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 960 600" width="960" height="600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="raven-agent-context.en-title raven-agent-context.en-desc" font-family="'Geist', 'Inter', system-ui, 'PingFang SC', 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif" fill="#1A4A3A" id="raven-agent-context-en-root">
+      <title id="raven-agent-context.en-title">How agents get their context</title>
+      <desc id="raven-agent-context.en-desc">Agent and project settings feed pre-run assembly, which prepares the prompt, skills and optional repository or task files for the selected agent.</desc>
+      <defs>
+      <style>#raven-agent-context-en-root .diagram-container { overflow-x: auto; }
+      #raven-agent-context-en-root .diagram-container:focus-visible { outline: 2px solid #80601B; outline-offset: 2px; }
+      #raven-agent-context-en-root .diagram-container { overflow-x: visible; }
+      #raven-agent-context-en-root .paper { fill: #FDFBF7; }
+      #raven-agent-context-en-root .section { fill: #F7F6EF; stroke: #D5DDD1; }
+      #raven-agent-context-en-root .box { fill: #FDFBF7; stroke: #B7C4B7; }
+      #raven-agent-context-en-root .focal { fill: #F6EDCF; stroke: #80601B; }
+      #raven-agent-context-en-root .external { fill: #FDFBF7; stroke: #426454; stroke-dasharray: 4 3; }
+      #raven-agent-context-en-root .line { stroke: #D5DDD1; }
+      #raven-agent-context-en-root .heading { font-size: 28px; font-weight: 600; }
+      #raven-agent-context-en-root .label { font-size: 14px; font-weight: 600; }
+      #raven-agent-context-en-root .name { font-size: 12px; font-weight: 600; }
+      #raven-agent-context-en-root .body { font-size: 12px; fill: #426454; }
+      #raven-agent-context-en-root .figure-kicker { font-size: 10px; font-weight: 600; letter-spacing: .10em; fill: #426454; }
+      #raven-agent-context-en-root .meta { font-size: 11px; fill: #426454; }
+      #raven-agent-context-en-root .code { font: 9px 'Geist Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace; fill: #426454; }
+      #raven-agent-context-en-root .gold { fill: #80601B; }
+      #raven-agent-context-en-root .route-label { font-size: 8px; font-weight: 600; letter-spacing: .08em; fill: #426454; }
+      #raven-agent-context-en-root .route-label-zh { font-size: 12px; font-weight: 600; fill: #426454; }
+      #raven-agent-context-en-root .arrow { stroke: #426454; stroke-width: 1.25; fill: none; }
+      #raven-agent-context-en-root .dashed { stroke-dasharray: 5 4; }</style>
+        <style>
+      .paper { fill: #FDFBF7; }
+      .section { fill: #F7F6EF; stroke: #D5DDD1; }
+      .box { fill: #FDFBF7; stroke: #B7C4B7; }
+      .focal { fill: #F6EDCF; stroke: #80601B; }
+      .external { fill: #FDFBF7; stroke: #426454; stroke-dasharray: 4 3; }
+      .line { stroke: #D5DDD1; }
+      .heading { font-size: 28px; font-weight: 600; }
+      .label { font-size: 14px; font-weight: 600; }
+      .name { font-size: 12px; font-weight: 600; }
+      .body { font-size: 12px; fill: #426454; }
+      .figure-kicker { font-size: 10px; font-weight: 600; letter-spacing: .10em; fill: #426454; }
+      .meta { font-size: 11px; fill: #426454; }
+      .code { font: 9px 'Geist Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace; fill: #426454; }
+      .gold { fill: #80601B; }
+      .route-label { font-size: 8px; font-weight: 600; letter-spacing: .08em; fill: #426454; }
+      .route-label-zh { font-size: 12px; font-weight: 600; fill: #426454; }
+      .arrow { stroke: #426454; stroke-width: 1.25; fill: none; }
+      .dashed { stroke-dasharray: 5 4; }
     </style>
-    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" class="m-default" />
-    </marker>
-    <marker id="arrowhead-emphasis" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" class="m-emphasis" />
-    </marker>
-    <marker id="arrowhead-security" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" class="m-security" />
-    </marker>
-    <marker id="arrowhead-dashed" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" class="m-dashed" />
-    </marker>
-    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M 40 0 L 0 0 0 40" class="c-grid" stroke-width="0.5"/>
-    </pattern>
-  </defs>
-
-  <!-- Background -->
-  <rect width="100%" height="100%" class="c-bg"/>
-  <!-- Background Grid -->
-  <rect width="100%" height="100%" fill="url(#grid)" />
-
-  <!-- Boundaries (behind everything) -->
-  <rect x="30" y="82" width="316" height="224" rx="12" class="c-region" stroke-width="1"/>
-  <text x="38" y="100" class="t-cloud" font-size="9" font-weight="600">Agent level (base · shared across projects · key = agent)</text>
-
-  <rect x="30" y="344" width="316" height="314" rx="12" class="c-region" stroke-width="1"/>
-  <text x="38" y="362" class="t-cloud" font-size="9" font-weight="600">Project level (append · isolated by project_code)</text>
-
-  <rect x="456" y="102" width="276" height="488" rx="12" class="c-region" stroke-width="1"/>
-  <text x="464" y="120" class="t-cloud" font-size="9" font-weight="600">Pre-run assembly (every Agent run)</text>
-
-  <rect x="822" y="92" width="292" height="512" rx="8" class="c-security-group" stroke-width="1"/>
-  <text x="830" y="110" class="t-security" font-size="9" font-weight="600">Agent run workspace &lt;workspace&gt;/ (cwd)</text>
-
-  <rect x="1178" y="86" width="316" height="498" rx="12" class="c-region" stroke-width="1"/>
-  <text x="1186" y="104" class="t-cloud" font-size="9" font-weight="600">Runtime · 5 Agents (Claude Agent SDK)</text>
-
-  <!-- Connection paths (before components for correct z-order) -->
-  <path d="M 316 144 L 393 144 Q 401 144 401 152 L 401 157 Q 401 165 409 165 L 486 165" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-  <path d="M 316 404 L 393 404 Q 401 404 401 396 L 401 173 Q 401 165 409 165 L 486 165" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
-  <path d="M 316 254 L 393 254 Q 401 254 401 262 L 401 339 Q 401 347 409 347 L 486 347" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-  <path d="M 316 506 L 393 506 Q 401 506 401 498 L 401 355 Q 401 347 409 347 L 486 347" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
-  <path d="M 316 608 L 393 608 Q 401 608 401 600 L 401 545 Q 401 537 409 537 L 486 537" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-  <path d="M 702 165 L 770.5 165 Q 777 165 777 158.5 L 777 158.5 Q 777 152 783.5 152 L 852 152" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-  <path d="M 702 347 L 769 347 Q 777 347 777 339 L 777 264 Q 777 256 785 256 L 852 256" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-  <path d="M 702 537 L 769 537 Q 777 537 777 529 L 777 458 Q 777 450 785 450 L 852 450" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-  <path d="M 1084 256 L 1138 256 Q 1146 256 1146 248 L 1146 152 Q 1146 144 1154 144 L 1208 144" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
-  <path d="M 1084 256 L 1139 256 Q 1146 256 1146 249 L 1146 249 Q 1146 242 1153 242 L 1208 242" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
-  <path d="M 1084 256 L 1138 256 Q 1146 256 1146 264 L 1146 332 Q 1146 340 1154 340 L 1208 340" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
-  <path d="M 1084 450 L 1138 450 Q 1146 450 1146 442 L 1146 250 Q 1146 242 1154 242 L 1208 242" class="a-dashed" stroke-width="1.5" marker-end="url(#arrowhead-dashed)"/>
-  <path d="M 1084 450 L 1138 450 Q 1146 450 1146 442 L 1146 348 Q 1146 340 1154 340 L 1208 340" class="a-dashed" stroke-width="1.5" marker-end="url(#arrowhead-dashed)"/>
-  <path d="M 1084 450 L 1140 450 Q 1146 450 1146 444 L 1146 444 Q 1146 438 1152 438 L 1208 438" class="a-dashed" stroke-width="1.5" marker-end="url(#arrowhead-dashed)"/>
-  <path d="M 1084 450 L 1138 450 Q 1146 450 1146 458 L 1146 528 Q 1146 536 1154 536 L 1208 536" class="a-dashed" stroke-width="1.5" marker-end="url(#arrowhead-dashed)"/>
-
-  <!-- Components -->
-  <rect x="60" y="112" width="256" height="64" rx="6" class="c-mask"/>
-  <rect x="60" y="112" width="256" height="64" rx="6" class="c-cloud" stroke-width="1.5"/>
-  <text x="188" y="142" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Agent prompt (base layer)</text>
-  <text x="188" y="158" class="t-muted" font-size="9" text-anchor="middle">prompts_config.yaml · claude_agent_&lt;name&gt; · zh/en</text>
-
-  <rect x="60" y="222" width="256" height="64" rx="6" class="c-mask"/>
-  <rect x="60" y="222" width="256" height="64" rx="6" class="c-cloud" stroke-width="1.5"/>
-  <text x="188" y="252" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Agent Skill</text>
-  <text x="188" y="268" class="t-muted" font-size="9" text-anchor="middle">data/agent_skills/&lt;agent&gt;/store · _registry.json</text>
-
-  <rect x="60" y="374" width="256" height="60" rx="6" class="c-mask"/>
-  <rect x="60" y="374" width="256" height="60" rx="6" class="c-database" stroke-width="1.5"/>
-  <text x="188" y="402" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Project prompt (append layer)</text>
-  <text x="188" y="418" class="t-muted" font-size="9" text-anchor="middle">data/project_prompts/&lt;code&gt;/system_prompt.md</text>
-
-  <rect x="60" y="476" width="256" height="60" rx="6" class="c-mask"/>
-  <rect x="60" y="476" width="256" height="60" rx="6" class="c-database" stroke-width="1.5"/>
-  <text x="188" y="504" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Project Skill</text>
-  <text x="188" y="520" class="t-muted" font-size="9" text-anchor="middle">data/project_skills/&lt;code&gt;/store · isolated by code</text>
-
-  <rect x="60" y="578" width="256" height="60" rx="6" class="c-mask"/>
-  <rect x="60" y="578" width="256" height="60" rx="6" class="c-database" stroke-width="1.5"/>
-  <text x="188" y="606" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Project repository</text>
-  <text x="188" y="622" class="t-muted" font-size="9" text-anchor="middle">repo_info &#8594; clone_url (lookup_project_repo)</text>
-
-  <rect x="486" y="132" width="216" height="66" rx="6" class="c-mask"/>
-  <rect x="486" y="132" width="216" height="66" rx="6" class="c-backend" stroke-width="1.5"/>
-  <text x="594" y="163" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">System prompt assembly</text>
-  <text x="594" y="179" class="t-muted" font-size="9" text-anchor="middle">_compose_system_prompt: base + project append</text>
-
-  <rect x="486" y="314" width="216" height="66" rx="6" class="c-mask"/>
-  <rect x="486" y="314" width="216" height="66" rx="6" class="c-backend" stroke-width="1.5"/>
-  <text x="594" y="345" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Skill materialization</text>
-  <text x="594" y="361" class="t-muted" font-size="9" text-anchor="middle">materialize_enabled_skills: project overrides name</text>
-
-  <rect x="486" y="504" width="216" height="66" rx="6" class="c-mask"/>
-  <rect x="486" y="504" width="216" height="66" rx="6" class="c-backend" stroke-width="1.5"/>
-  <text x="594" y="535" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Repository clone</text>
-  <text x="594" y="551" class="t-muted" font-size="9" text-anchor="middle">git clone &#8594; &lt;workspace&gt;/repo/ (first run)</text>
-
-  <rect x="852" y="122" width="232" height="60" rx="6" class="c-mask"/>
-  <rect x="852" y="122" width="232" height="60" rx="6" class="c-frontend" stroke-width="1.5"/>
-  <text x="968" y="150" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">system_prompt (composed)</text>
-  <text x="968" y="166" class="t-muted" font-size="9" text-anchor="middle">base + project-level + reply-language instruction</text>
-
-  <rect x="852" y="226" width="232" height="60" rx="6" class="c-mask"/>
-  <rect x="852" y="226" width="232" height="60" rx="6" class="c-frontend" stroke-width="1.5"/>
-  <text x="968" y="254" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">.claude/skills/&lt;name&gt;/</text>
-  <text x="968" y="270" class="t-muted" font-size="9" text-anchor="middle">setting_sources=["project"] auto-loaded</text>
-
-  <rect x="852" y="420" width="232" height="60" rx="6" class="c-mask"/>
-  <rect x="852" y="420" width="232" height="60" rx="6" class="c-frontend" stroke-width="1.5"/>
-  <text x="968" y="448" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">repo/ (read-only search)</text>
-  <text x="968" y="464" class="t-muted" font-size="9" text-anchor="middle">Read · Grep · Glob · Bash · git</text>
-
-  <rect x="852" y="524" width="232" height="60" rx="6" class="c-mask"/>
-  <rect x="852" y="524" width="232" height="60" rx="6" class="c-frontend" stroke-width="1.5"/>
-  <text x="968" y="552" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">task.json · logs/</text>
-  <text x="968" y="568" class="t-muted" font-size="9" text-anchor="middle">Task metadata / log archive (per Agent)</text>
-
-  <rect x="1208" y="116" width="256" height="56" rx="6" class="c-mask"/>
-  <rect x="1208" y="116" width="256" height="56" rx="6" class="c-backend" stroke-width="1.5"/>
-  <text x="1336" y="142" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">DeviceAgent</text>
-  <text x="1336" y="158" class="t-muted" font-size="9" text-anchor="middle">Device chat · POST /chat</text>
-
-  <rect x="1208" y="214" width="256" height="56" rx="6" class="c-mask"/>
-  <rect x="1208" y="214" width="256" height="56" rx="6" class="c-backend" stroke-width="1.5"/>
-  <text x="1336" y="240" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">LogAnalysisAgent</text>
-  <text x="1336" y="256" class="t-muted" font-size="9" text-anchor="middle">Log root-cause · Celery async</text>
-
-  <rect x="1208" y="312" width="256" height="56" rx="6" class="c-mask"/>
-  <rect x="1208" y="312" width="256" height="56" rx="6" class="c-backend" stroke-width="1.5"/>
-  <text x="1336" y="338" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">ProjectExpertAgent</text>
-  <text x="1336" y="354" class="t-muted" font-size="9" text-anchor="middle">Source Q&amp;A · /project-expert</text>
-
-  <rect x="1208" y="410" width="256" height="56" rx="6" class="c-mask"/>
-  <rect x="1208" y="410" width="256" height="56" rx="6" class="c-backend" stroke-width="1.5"/>
-  <text x="1336" y="436" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">PackageSearchAgent</text>
-  <text x="1336" y="452" class="t-muted" font-size="9" text-anchor="middle">Package search · Git context</text>
-
-  <rect x="1208" y="508" width="256" height="56" rx="6" class="c-mask"/>
-  <rect x="1208" y="508" width="256" height="56" rx="6" class="c-backend" stroke-width="1.5"/>
-  <text x="1336" y="534" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">BugFixAgent</text>
-  <text x="1336" y="550" class="t-muted" font-size="9" text-anchor="middle">Bug-fix branch</text>
-
-  <!-- Connection labels -->
-  <rect x="385.6" y="134.5" width="30.8" height="14" rx="3" class="c-mask"/>
-  <text x="401" y="144.5" class="t-muted" font-size="8" text-anchor="middle">base</text>
-  <rect x="384.8" y="264.5" width="32.4" height="14" rx="3" class="c-mask"/>
-  <text x="401" y="274.5" class="t-backend" font-size="8" text-anchor="middle">append</text>
-  <rect x="378.6" y="280.5" width="44.8" height="14" rx="3" class="c-mask"/>
-  <text x="401" y="290.5" class="t-muted" font-size="8" text-anchor="middle">placed first</text>
-  <rect x="382.8" y="406.5" width="36.4" height="14" rx="3" class="c-mask"/>
-  <text x="401" y="416.5" class="t-backend" font-size="8" text-anchor="middle">override</text>
-  <rect x="374.4" y="552.5" width="53.2" height="14" rx="3" class="c-mask"/>
-  <text x="401" y="562.5" class="t-muted" font-size="8" text-anchor="middle">git clone</text>
-
-  <!-- Legend -->
-  <text x="40" y="697" class="t-primary" font-size="9" font-weight="600">Legend</text>
-  <rect x="40" y="702" width="14" height="9" rx="2" class="c-cloud" stroke-width="1"/>
-  <text x="60" y="710" class="t-muted" font-size="8">Cloud</text>
-  <rect x="123" y="702" width="14" height="9" rx="2" class="c-database" stroke-width="1"/>
-  <text x="143" y="710" class="t-muted" font-size="8">Database</text>
-  <rect x="221" y="702" width="14" height="9" rx="2" class="c-backend" stroke-width="1"/>
-  <text x="241" y="710" class="t-muted" font-size="8">Backend</text>
-  <rect x="314" y="702" width="14" height="9" rx="2" class="c-frontend" stroke-width="1"/>
-  <text x="334" y="710" class="t-muted" font-size="8">Frontend</text>
-</svg>
+        <pattern id="raven-agent-context-en-raven-agent-context.en-grain" width="19" height="23" patternUnits="userSpaceOnUse">
+          <path d="M 3 4 h 1 M 13 17 h 1" stroke="#426454" stroke-opacity=".045" stroke-width=".6"/>
+        </pattern>
+        <marker id="raven-agent-context-en-raven-agent-context.en-arrow" viewBox="0 0 8 6" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto" markerUnits="userSpaceOnUse">
+          <path d="M 0 0 L 8 3 L 0 6 Z" fill="#426454"/>
+        </marker>
+      </defs>
+      <rect x="0" y="0" width="960" height="600" rx="0" class="paper"/>
+      <rect width="960" height="600" fill="url(#raven-agent-context-en-raven-agent-context.en-grain)"/>
+      <text x="40" y="47" class="figure-kicker" text-anchor="start">Agent context</text>
+      <text x="920" y="47" class="figure-kicker" text-anchor="end">RavenAI  /  04</text>
+      <text x="40" y="83" class="heading" text-anchor="start">How agents get their context</text>
+      <text x="40" y="111" class="body" text-anchor="start">Agent defaults and project-specific inputs are resolved before each supported run.</text>
+      <line x1="40" y1="132" x2="920" y2="132" class="line"/>
+      <text x="40" y="167" class="label" text-anchor="start">01  Context sources</text>
+      <text x="264" y="167" class="label" text-anchor="start">02  Assembly</text>
+      <text x="480" y="167" class="label" text-anchor="start">03  Execution context</text>
+      <text x="752" y="167" class="label" text-anchor="start">04  Runtime</text>
+      <path d="M 232 292 H 264" class="arrow" marker-end="url(#raven-agent-context-en-raven-agent-context.en-arrow)"/>
+      <path d="M 232 380 H 264" class="arrow" marker-end="url(#raven-agent-context-en-raven-agent-context.en-arrow)"/>
+      <path d="M 448 336 H 480" class="arrow" marker-end="url(#raven-agent-context-en-raven-agent-context.en-arrow)"/>
+      <path d="M 704 336 H 752" class="arrow" marker-end="url(#raven-agent-context-en-raven-agent-context.en-arrow)"/>
+      <rect x="40" y="228" width="192" height="104" rx="6" class="box"/>
+      <text x="56" y="250" class="name" text-anchor="start">Agent defaults</text>
+      <text x="56" y="268" class="body" text-anchor="start">Shared by agent type</text>
+      <text x="56" y="283" class="code" text-anchor="start">prompts_config.yaml</text>
+      <text x="56" y="298" class="code" text-anchor="start">data/agent_skills/</text>
+      <rect x="40" y="356" width="192" height="112" rx="6" class="box"/>
+      <text x="56" y="378" class="name" text-anchor="start">Project inputs</text>
+      <text x="56" y="396" class="body" text-anchor="start">Scoped by project_code</text>
+      <text x="56" y="411" class="code" text-anchor="start">data/project_prompts/</text>
+      <text x="56" y="426" class="code" text-anchor="start">data/project_skills/</text>
+      <text x="56" y="441" class="body" text-anchor="start">Repository and credentials</text>
+      <rect x="264" y="204" width="184" height="264" rx="6" class="focal"/>
+      <text x="280" y="232" class="label" text-anchor="start">Resolve run inputs</text>
+      <text x="280" y="270" class="name" text-anchor="start">Compose the prompt</text>
+      <text x="280" y="290" class="body" text-anchor="start">Base, project addendum</text>
+      <text x="280" y="306" class="body" text-anchor="start">and reply language</text>
+      <line x1="280" y1="320" x2="432" y2="320" class="line"/>
+      <text x="280" y="344" class="name" text-anchor="start">Materialize enabled skills</text>
+      <text x="280" y="364" class="body" text-anchor="start">Project skill wins on ties</text>
+      <line x1="280" y1="380" x2="432" y2="380" class="line"/>
+      <text x="280" y="404" class="name" text-anchor="start">Prepare repository</text>
+      <text x="280" y="424" class="body" text-anchor="start">Clone or reuse as needed</text>
+      <rect x="480" y="204" width="224" height="264" rx="6" class="box"/>
+      <text x="496" y="232" class="label" text-anchor="start">Prompt &amp; workspace</text>
+      <text x="496" y="270" class="name" text-anchor="start">System prompt</text>
+      <text x="496" y="290" class="body" text-anchor="start">Passed to the runtime</text>
+      <line x1="496" y1="320" x2="688" y2="320" class="line"/>
+      <text x="496" y="344" class="code" text-anchor="start">.claude/skills/&lt;name&gt;/</text>
+      <text x="496" y="364" class="body" text-anchor="start">Skills available to the SDK</text>
+      <line x1="496" y1="380" x2="688" y2="380" class="line"/>
+      <text x="496" y="404" class="code" text-anchor="start">repo/  ·  task.json  ·  logs/</text>
+      <text x="496" y="424" class="body" text-anchor="start">Included as needed</text>
+      <rect x="752" y="248" width="168" height="176" rx="6" class="box"/>
+      <text x="768" y="273" class="name" text-anchor="start">Claude Agent SDK</text>
+      <text x="768" y="295" class="body" text-anchor="start">GeneralAgent</text>
+      <text x="768" y="314" class="body" text-anchor="start">DeviceAgent</text>
+      <text x="768" y="333" class="body" text-anchor="start">ProjectExpertAgent</text>
+      <text x="768" y="352" class="body" text-anchor="start">PackageSearchAgent</text>
+      <text x="768" y="371" class="body" text-anchor="start">LogAnalysisAgent</text>
+      <text x="768" y="390" class="body" text-anchor="start">BugFixAgent</text>
+      <line x1="40" y1="488" x2="920" y2="488" class="line"/>
+      <text x="40" y="519" class="label" text-anchor="start">Source inspection</text>
+      <text x="40" y="541" class="body" text-anchor="start">Project Expert and Log Analysis use Git for inspection.</text>
+      <text x="480" y="519" class="label" text-anchor="start">Bug-fix runs</text>
+      <text x="480" y="541" class="body" text-anchor="start">A dedicated task can prepare a fix branch for review.</text>
+      <line x1="40" y1="564" x2="920" y2="564" class="line"/>
+      <text x="40" y="583" class="meta" text-anchor="start">Solid arrow  ·  Context passed to the next stage</text>
+      <text x="920" y="583" class="meta" text-anchor="end">Workspace contents vary by agent and task</text>
+    </svg>

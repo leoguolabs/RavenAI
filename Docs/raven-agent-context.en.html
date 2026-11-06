@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How agents get their context · RavenAI</title>
+  <style>
+    body { margin: 0; padding: 24px; background: #FDFBF7; }
+    main { margin-inline: auto; max-width: 960px; }
+    .diagram-container { overflow-x: auto; }
+    .diagram-container:focus-visible { outline: 2px solid #80601B; outline-offset: 2px; }
+    svg { display: block; width: 100%; height: auto; min-width: 960px; }
+    @media (max-width: 640px) { body { padding: 8px; } }
+    @media print {
+      body { padding: 0; }
+      .diagram-container { overflow-x: visible; }
+      svg { min-width: 0; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="diagram-container" tabindex="0" role="region" aria-label="How agents get their context">
+    <svg viewBox="0 0 960 600" width="960" height="600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="raven-agent-context.en-title raven-agent-context.en-desc" font-family="'Geist', 'Inter', system-ui, 'PingFang SC', 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif" fill="#1A4A3A">
+      <title id="raven-agent-context.en-title">How agents get their context</title>
+      <desc id="raven-agent-context.en-desc">Agent and project settings feed pre-run assembly, which prepares the prompt, skills and optional repository or task files for the selected agent.</desc>
+      <defs>
+        <style>
+      .paper { fill: #FDFBF7; }
+      .section { fill: #F7F6EF; stroke: #D5DDD1; }
+      .box { fill: #FDFBF7; stroke: #B7C4B7; }
+      .focal { fill: #F6EDCF; stroke: #80601B; }
+      .external { fill: #FDFBF7; stroke: #426454; stroke-dasharray: 4 3; }
+      .line { stroke: #D5DDD1; }
+      .heading { font-size: 28px; font-weight: 600; }
+      .label { font-size: 14px; font-weight: 600; }
+      .name { font-size: 12px; font-weight: 600; }
+      .body { font-size: 12px; fill: #426454; }
+      .figure-kicker { font-size: 10px; font-weight: 600; letter-spacing: .10em; fill: #426454; }
+      .meta { font-size: 11px; fill: #426454; }
+      .code { font: 9px 'Geist Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace; fill: #426454; }
+      .gold { fill: #80601B; }
+      .route-label { font-size: 8px; font-weight: 600; letter-spacing: .08em; fill: #426454; }
+      .route-label-zh { font-size: 12px; font-weight: 600; fill: #426454; }
+      .arrow { stroke: #426454; stroke-width: 1.25; fill: none; }
+      .dashed { stroke-dasharray: 5 4; }
+    </style>
+        <pattern id="raven-agent-context.en-grain" width="19" height="23" patternUnits="userSpaceOnUse">
+          <path d="M 3 4 h 1 M 13 17 h 1" stroke="#426454" stroke-opacity=".045" stroke-width=".6"/>
+        </pattern>
+        <marker id="raven-agent-context.en-arrow" viewBox="0 0 8 6" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto" markerUnits="userSpaceOnUse">
+          <path d="M 0 0 L 8 3 L 0 6 Z" fill="#426454"/>
+        </marker>
+      </defs>
+      <rect x="0" y="0" width="960" height="600" rx="0" class="paper"/>
+      <rect width="960" height="600" fill="url(#raven-agent-context.en-grain)"/>
+      <text x="40" y="47" class="figure-kicker" text-anchor="start">Agent context</text>
+      <text x="920" y="47" class="figure-kicker" text-anchor="end">RavenAI  /  04</text>
+      <text x="40" y="83" class="heading" text-anchor="start">How agents get their context</text>
+      <text x="40" y="111" class="body" text-anchor="start">Agent defaults and project-specific inputs are resolved before each supported run.</text>
+      <line x1="40" y1="132" x2="920" y2="132" class="line"/>
+      <text x="40" y="167" class="label" text-anchor="start">01  Context sources</text>
+      <text x="264" y="167" class="label" text-anchor="start">02  Assembly</text>
+      <text x="480" y="167" class="label" text-anchor="start">03  Execution context</text>
+      <text x="752" y="167" class="label" text-anchor="start">04  Runtime</text>
+      <path d="M 232 292 H 264" class="arrow" marker-end="url(#raven-agent-context.en-arrow)"/>
+      <path d="M 232 380 H 264" class="arrow" marker-end="url(#raven-agent-context.en-arrow)"/>
+      <path d="M 448 336 H 480" class="arrow" marker-end="url(#raven-agent-context.en-arrow)"/>
+      <path d="M 704 336 H 752" class="arrow" marker-end="url(#raven-agent-context.en-arrow)"/>
+      <rect x="40" y="228" width="192" height="104" rx="6" class="box"/>
+      <text x="56" y="250" class="name" text-anchor="start">Agent defaults</text>
+      <text x="56" y="268" class="body" text-anchor="start">Shared by agent type</text>
+      <text x="56" y="283" class="code" text-anchor="start">prompts_config.yaml</text>
+      <text x="56" y="298" class="code" text-anchor="start">data/agent_skills/</text>
+      <rect x="40" y="356" width="192" height="112" rx="6" class="box"/>
+      <text x="56" y="378" class="name" text-anchor="start">Project inputs</text>
+      <text x="56" y="396" class="body" text-anchor="start">Scoped by project_code</text>
+      <text x="56" y="411" class="code" text-anchor="start">data/project_prompts/</text>
+      <text x="56" y="426" class="code" text-anchor="start">data/project_skills/</text>
+      <text x="56" y="441" class="body" text-anchor="start">Repository and credentials</text>
+      <rect x="264" y="204" width="184" height="264" rx="6" class="focal"/>
+      <text x="280" y="232" class="label" text-anchor="start">Resolve run inputs</text>
+      <text x="280" y="270" class="name" text-anchor="start">Compose the prompt</text>
+      <text x="280" y="290" class="body" text-anchor="start">Base, project addendum</text>
+      <text x="280" y="306" class="body" text-anchor="start">and reply language</text>
+      <line x1="280" y1="320" x2="432" y2="320" class="line"/>
+      <text x="280" y="344" class="name" text-anchor="start">Materialize enabled skills</text>
+      <text x="280" y="364" class="body" text-anchor="start">Project skill wins on ties</text>
+      <line x1="280" y1="380" x2="432" y2="380" class="line"/>
+      <text x="280" y="404" class="name" text-anchor="start">Prepare repository</text>
+      <text x="280" y="424" class="body" text-anchor="start">Clone or reuse as needed</text>
+      <rect x="480" y="204" width="224" height="264" rx="6" class="box"/>
+      <text x="496" y="232" class="label" text-anchor="start">Prompt &amp; workspace</text>
+      <text x="496" y="270" class="name" text-anchor="start">System prompt</text>
+      <text x="496" y="290" class="body" text-anchor="start">Passed to the runtime</text>
+      <line x1="496" y1="320" x2="688" y2="320" class="line"/>
+      <text x="496" y="344" class="code" text-anchor="start">.claude/skills/&lt;name&gt;/</text>
+      <text x="496" y="364" class="body" text-anchor="start">Skills available to the SDK</text>
+      <line x1="496" y1="380" x2="688" y2="380" class="line"/>
+      <text x="496" y="404" class="code" text-anchor="start">repo/  ·  task.json  ·  logs/</text>
+      <text x="496" y="424" class="body" text-anchor="start">Included as needed</text>
+      <rect x="752" y="248" width="168" height="176" rx="6" class="box"/>
+      <text x="768" y="273" class="name" text-anchor="start">Claude Agent SDK</text>
+      <text x="768" y="295" class="body" text-anchor="start">GeneralAgent</text>
+      <text x="768" y="314" class="body" text-anchor="start">DeviceAgent</text>
+      <text x="768" y="333" class="body" text-anchor="start">ProjectExpertAgent</text>
+      <text x="768" y="352" class="body" text-anchor="start">PackageSearchAgent</text>
+      <text x="768" y="371" class="body" text-anchor="start">LogAnalysisAgent</text>
+      <text x="768" y="390" class="body" text-anchor="start">BugFixAgent</text>
+      <line x1="40" y1="488" x2="920" y2="488" class="line"/>
+      <text x="40" y="519" class="label" text-anchor="start">Source inspection</text>
+      <text x="40" y="541" class="body" text-anchor="start">Project Expert and Log Analysis use Git for inspection.</text>
+      <text x="480" y="519" class="label" text-anchor="start">Bug-fix runs</text>
+      <text x="480" y="541" class="body" text-anchor="start">A dedicated task can prepare a fix branch for review.</text>
+      <line x1="40" y1="564" x2="920" y2="564" class="line"/>
+      <text x="40" y="583" class="meta" text-anchor="start">Solid arrow  ·  Context passed to the next stage</text>
+      <text x="920" y="583" class="meta" text-anchor="end">Workspace contents vary by agent and task</text>
+    </svg>
+    </div>
+  </main>
+</body>
+</html>

@@ -2,13 +2,9 @@
 
 English | [中文](README.zh.md)
 
-> **RavenAI is a lightweight, enterprise-grade, open-source alternative to Manus — built for teams that need AI agents to understand project context, use tools, operate real systems, and carry work from a request to a verifiable result.**
+> **RavenAI is a lightweight, open-source AI agent platform that companies can self-host for their internal R&D and testing workflows.**
 
-RavenAI provides an open, self-hostable foundation for building and operating practical AI agents. It brings models, prompts, skills, repositories, enterprise services, and real devices into one extensible workspace, so organizations can keep control of their data and infrastructure while adapting agents to their own workflows.
-
-The platform is lightweight enough to fit into an existing technology stack and structured for enterprise use, with project-level context isolation, credential boundaries, configurable model routing, reusable skills, and traceable execution workspaces. RavenAI is domain-agnostic by design: it began in satellite-communications R&D and testing, but its architecture can support any project and, through customization, agents for engineering, operations, support, and other business roles.
-
-RavenAI is an independent open-source project and is not affiliated with Manus.
+RavenAI grew out of satellite communications R&D and testing. Teams can connect their existing repositories, software packages, test devices, and logs, and configure the models, prompts, skills, and access credentials for each project.
 
 This repository is the top-level workspace for two major subprojects:
 
@@ -17,128 +13,60 @@ This repository is the top-level workspace for two major subprojects:
 
 ## Mission
 
-Our mission is to make capable AI agents accessible to every AI builder and enterprise team — not as another chatbot or a closed demo, but as an open platform that can be deployed, understood, extended, and trusted in real work.
+Our mission is to help R&D and testing teams use AI agents to take code changes through validation on real devices and bring test evidence back to developers for review and fixes.
 
-RavenAI focuses on four goals:
+- **Integrate with existing tools** for version control, package management, and device testing.
+- **Run tests in project context** so agents can find the right build and invoke the relevant device tools.
+- **Keep results traceable** by retaining test logs, task records, and analysis evidence.
+- **Adapt by project** with isolated context and credentials, configurable prompts, and reusable skills.
 
-- **Lightweight adoption**: integrate with existing models, repositories, services, tools, and devices without rebuilding the entire enterprise stack.
-- **End-to-end execution**: move beyond conversation by allowing agents to gather context, invoke tools, perform tasks, preserve evidence, and return results.
-- **Enterprise-ready foundations**: keep projects, credentials, knowledge, and execution contexts separated and manageable.
-- **Open extensibility**: let the community inspect, self-host, customize, and contribute agents, skills, tools, and workflows.
-
-## What RavenAI Solves
-
-R&D and testing is RavenAI's first deeply integrated enterprise scenario. It connects the real workflow into a closed loop:
+## R&D and Testing Workflow
 
 1. Developers submit code and evolve versions through Git.
 2. A lightweight Release Note Agent reads Git history and automatically drafts release notes for package-management refactors.
 3. Reconstructed package management supports package creation, upload, metadata extraction, search, and distribution.
-4. Testers use natural language to operate test devices through RavenClient, ChatAgent, Device Link, MCP Server, device tools, and Python automation.
+4. Testers use natural language to operate test devices through RavenClient, DeviceAgent, Device Link, MCP Server, device tools, and Python automation.
 5. After testing, logs are submitted to RavenAIService and analyzed by LogAnalysisAgent to produce evidence, issue clues, and feedback for development.
 
 ## R&D Testing Flow Comparison
 
-Without Agent participation, the R&D testing flow relies on manual handoffs, manual package lookup, manual device operations, and manual log inspection:
+### Manual workflow
 
-```mermaid
-%%{init: {"theme": "base", "flowchart": {"htmlLabels": true, "nodeSpacing": 24, "rankSpacing": 24, "curve": "basis"}, "themeVariables": {"fontFamily": "Arial, Microsoft YaHei", "primaryTextColor": "#0F172A", "lineColor": "#64748B"}}}%%
+[![Manual R&D testing, from code commit through package handoff and device testing to log inspection and fixes](Docs/raven-testing-manual.en.svg)](Docs/raven-testing-manual.en.html)
 
-flowchart LR
+### RavenAI-assisted workflow
 
-A["Code Commit"] --> B["Manual Notes"]
-B --> C["Package Handoff"]
-C --> D["Package Search"]
-D --> E["Device Ops"]
-E --> F["Scattered Logs"]
-F --> G["Manual Debug"]
-G --> H["Fix"]
-
-P1["Handoff Loops"] -.-> B
-P2["Version Drift"] -.-> C
-P3["High Barrier"] -.-> E
-P4["Slow Debug"] -.-> G
-
-classDef normal fill:#F8FAFC,stroke:#64748B,stroke-width:1.3px,color:#0F172A;
-classDef manual fill:#FEF2F2,stroke:#DC2626,stroke-width:1.5px,color:#7F1D1D;
-classDef pain fill:#FFF7ED,stroke:#EA580C,stroke-width:1.3px,color:#7C2D12;
-
-class A,H normal;
-class B,C,D,E,F,G manual;
-class P1,P2,P3,P4 pain;
-```
-
-With RavenAI, Agents sit in the key friction points: release notes, package management, package retrieval, device control, and log analysis:
-
-```mermaid
-%%{init: {"theme": "base", "flowchart": {"htmlLabels": true, "nodeSpacing": 24, "rankSpacing": 24, "curve": "basis"}, "themeVariables": {"fontFamily": "Arial, Microsoft YaHei", "primaryTextColor": "#0F172A", "lineColor": "#475569"}}}%%
-
-flowchart LR
-
-A["Code Commit"] --> B["Agent Notes"]
-B --> C["Agent Packages"]
-C --> D["Agent Search"]
-D --> E["Agent Device"]
-E --> F["Log Staging"]
-F --> G["Agent Analysis"]
-G --> H["Fix"]
-
-V1["Less Handoff"] -.-> B
-V2["Lower Delivery"] -.-> C
-V3["Lower Barrier"] -.-> E
-V4["Faster Diagnosis"] -.-> G
-
-classDef normal fill:#F8FAFC,stroke:#64748B,stroke-width:1.3px,color:#0F172A;
-classDef agent fill:#F5F3FF,stroke:#7C3AED,stroke-width:1.7px,color:#1E1B4B;
-classDef value fill:#ECFDF5,stroke:#059669,stroke-width:1.3px,color:#064E3B;
-classDef repair fill:#FFF7ED,stroke:#EA580C,stroke-width:1.5px,color:#7C2D12;
-
-class A,F normal;
-class B,C,D,E,G agent;
-class V1,V2,V3,V4 value;
-class H repair;
-```
+[![RavenAI-assisted R&D testing with release-note drafting, package search, Device Link and log analysis](Docs/raven-testing-assisted.en.svg)](Docs/raven-testing-assisted.en.html)
 
 ## Architecture Overview
 
-> Open [Docs/raven-architecture.html](Docs/raven-architecture.html) and [Docs/raven-agent-context.html](Docs/raven-agent-context.html) in a browser for the interactive version with dark/light theme toggle and export.
-
 ### System Technology Structure
 
-![RavenAI Architecture](Docs/raven-architecture.en.svg)
+[![RavenAI architecture showing web and desktop clients, FastAPI, Device Link, agent runtime, workers and external systems](Docs/raven-architecture.en.svg)](Docs/raven-architecture.en.html)
 
-- **Client layer**: `RavenClient`, Electron, React, MCP Client, package tools, DeviceLinkClient.
-- **AI orchestration layer**: ChatAgent and LogAnalysisAgent built with the Claude Agent SDK and OpenAI-compatible LLM access.
-- **Service layer**: FastAPI services in `RavenAIService`, Express-based `package-server`, and the Electron `update-server`.
-- **Communication and tasks**: REST APIs, WebSocket Device Link, Celery, and Redis.
-- **Data and knowledge layer**: uploaded packages, package metadata, log archives, database records, and FAISS vector indexes.
-- **Device tool layer**: MCP Server, device-interface wrappers, and Python automation scripts for device operation and testing.
-
-Key architectural highlights:
-- **Prompt layering**: Agent-level base prompts (`prompts_config.yaml`) merged with Project-level appended prompts (`data/project_prompts/<project_code>/system_prompt.md`) before each run; edits take effect immediately.
-- **Skill layering (Claude Agent SDK)**: Agent-level skills (`data/agent_skills/<agent>/store`) and Project-level skills (`data/project_skills/<project_code>/store`) are materialized to `.claude/skills/` before each run.
-- **Service ↔ Client reverse tunnel**: Client connects outbound via WebSocket to `Service:8085/ws/device-link`; heartbeat ping/pong with exponential-backoff reconnect; no inbound port required on the device side.
-- **Secure repository access**: LogAnalysis / BugFix / ProjectExpert Agents connect to repositories via SSH Key / Token with credential isolation; repositories are cloned as read-only copies.
+- **RavenClient** uses Electron and React and provides package tools, an MCP client, and the Chaterm SSH terminal. The Vue web console provides operations and administration interfaces.
+- **FastAPI** exposes chat, log staging, and package management. Celery and Redis handle background log-analysis and bug-fix tasks.
+- The **Claude Agent SDK** runs the agents. Model routing supports providers including Anthropic-compatible endpoints and OpenAI Responses.
+- **Device Link** starts when RavenClient opens a WebSocket to `/ws/device-link` on port `8085`. The client maintains the connection with heartbeats and reconnects after a disconnect. Device tools can use MCP, SSH, or Python automation.
+- **Project data** includes package metadata, log archives, and task records. Agents that need source context access the selected project repository using its configured credentials.
 
 ### Agent Context Layers and Assembly
 
-![RavenAI Agent Context](Docs/raven-agent-context.en.svg)
+[![Agent and project context feed pre-run prompt, skill and workspace assembly before agent execution](Docs/raven-agent-context.en.svg)](Docs/raven-agent-context.en.html)
 
-Context for each Agent run is assembled from two layers before the Agent starts:
-
-- **Agent level (base layer)**: Keyed by agent name; shared across all projects. Prompts from `prompts_config.yaml` (`claude_agent_<name>`, zh/en locale). Skills from `data/agent_skills/<agent>/store` controlled by `_registry.json`.
-- **Project level (append layer)**: Isolated by `project_code`; activated when the user selects a project. Prompts from `project_prompts/<code>/system_prompt.md` (edit takes effect immediately). Skills from `project_skills/<code>/store`; same name overrides the Agent-level skill.
-- **Pre-run assembly**: Final system prompt = base + project append + reply-language instruction. Skills are materialized to `.claude/skills/` (Agent Skills first; project-level overrides same name). Repository is `git clone`d to `<workspace>/repo/` (reused if `.git` already exists).
-- **Workspace `<workspace>/`**: Contains the synthesized `system_prompt`, `.claude/skills/<name>/`, `repo/` (read-only: Read/Grep/Glob/Bash/git), and `task.json + logs/`.
+- **Agent defaults** come from `prompts_config.yaml` and enabled skills under `data/agent_skills/<agent>/store`.
+- **Project inputs** are scoped by `project_code`. Where supported, the service appends `data/project_prompts/<project_code>/system_prompt.md` and uses the project-level skill when both levels provide the same name.
+- **Run preparation** passes the composed prompt to the runtime and places applicable skills in `.claude/skills/`. Repository checkout or reuse, `task.json`, and `logs/` depend on the agent and task.
+- **Repository access** depends on the task. ProjectExpertAgent and LogAnalysisAgent use the checkout to inspect source. A dedicated BugFixAgent task can prepare and push a fix branch for human review.
 
 ## Repository Layout
 
 ```text
 RavenAI/
 ├── RavenClient/                 # Desktop client, package tooling, MCP and device workflows
-├── RavenAIService/              # Backend services, log staging, AI analysis, package server
+├── RavenAIService/              # Backend services, log staging, AI analysis, package management
 │   ├── app/                     # FastAPI application, agents, services, tasks
-│   ├── frontend/                # Web frontend for service-side UI
-│   └── package-server/          # Express package management and RAG search service
+│   └── frontend/                # Web frontend for service-side UI
 ├── Docs/                        # Project documentation and feature notes
 ├── .gitmodules                  # Submodule definitions
 └── README.md                    # This document
@@ -169,14 +97,6 @@ pip install -r requirements.txt
 uvicorn app.main:app --host 0.0.0.0 --port 8085 --reload
 ```
 
-Start the package server:
-
-```bash
-cd RavenAIService/package-server
-npm install
-npm run dev
-```
-
 Start the desktop client:
 
 ```bash
@@ -188,7 +108,7 @@ yarn dev
 ## Key Services
 
 - RavenAIService API: `http://localhost:8085`
-- Package server: `http://localhost:8083/raven`
+- Package API at `http://localhost:8085/raven/api/packages`
 - Update server: `RavenClient/update-server`
 - Desktop client: launched through Electron during `yarn dev`
 
