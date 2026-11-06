@@ -2,13 +2,9 @@
 
 [English](README.md) | 中文
 
-> **RavenAI 致力于成为一个轻量、企业级的开源 Manus 替代方案——帮助团队构建真正理解项目上下文、能够调用工具和操作真实系统，并将用户需求执行到可验证结果的 AI Agent。**
+> **RavenAI 是面向企业内部研发测试体系的轻量、开源 AI Agent 平台，支持自托管。**
 
-RavenAI 提供开放、可自托管的 AI Agent 构建与运行底座，将模型、提示词、Skill、代码库、企业服务和真实设备连接到同一个可扩展工作空间中。企业可以掌控自己的数据与基础设施，并让 Agent 适配内部的业务流程。
-
-平台既足够轻量，可以融入现有技术栈；也面向企业应用提供结构化基础，包括项目级上下文隔离、凭据边界、可配置模型路由、可复用 Skill 和可追溯的执行工作区。RavenAI 从卫星通信研发测试场景起步，但在设计上不绑定特定领域，可扩展到任意项目，也可以通过定制承载研发、运维、支持及其他业务角色的 Agent。
-
-RavenAI 是独立的开源项目，与 Manus 官方无隶属或关联关系。
+RavenAI 起步于卫星通信研发测试。团队可以接入现有的代码库、软件包、测试设备和日志，并按项目配置模型、提示词、Skill 和访问凭据。
 
 本仓库是顶层工作区，包含两个主要子项目：
 
@@ -17,119 +13,51 @@ RavenAI 是独立的开源项目，与 Manus 官方无隶属或关联关系。
 
 ## 项目使命
 
-我们的使命是让每一位 AI 开发者和企业团队都能使用真正具备执行能力的 AI Agent——它不只是聊天机器人或封闭的演示产品，而是一个能够自主部署、理解、扩展，并可用于真实工作的开放平台。
+我们的使命是帮助研发和测试团队用 AI Agent 把代码变更推进到真实设备验证，并把测试证据带回研发环节，供开发人员复核和修复问题。
 
-RavenAI 聚焦四个目标：
+- **接入现有工具**，沿用团队已有的版本管理、软件包管理和设备测试工具。
+- **结合项目上下文执行测试**，让 Agent 找到对应版本的软件包并调用设备工具。
+- **保留可追溯的测试结果**，记录测试日志、任务过程和分析证据。
+- **按项目适配**，隔离项目上下文和访问凭据，配置提示词并复用 Skill。
 
-- **轻量接入**：连接企业现有的模型、代码库、服务、工具和设备，无需重建整套技术体系。
-- **端到端执行**：让 Agent 超越对话，能够获取上下文、调用工具、完成任务、保留证据并交付结果。
-- **企业级基础**：让项目、凭据、知识和执行上下文保持隔离，并且可管理、可追溯。
-- **开放扩展**：让社区能够审查、自托管、定制并共同建设 Agent、Skill、工具与工作流。
-
-## 项目解决的问题
-
-研发测试是 RavenAI 首个深度落地的企业场景。它将真实工作流程串联成一个闭环：
+## 研发测试工作流
 
 1. 研发人员通过 Git 提交代码并推进版本演进。
 2. 简单的 Release Note Agent 读取 Git 提交历史，自动编写包管理重构相关 Release Note。
 3. 重构后的包管理能力支持升级包制作、上传、元数据提取、检索和分发。
-4. 测试人员通过 RavenClient、ChatAgent、Device Link、MCP Server、设备工具和 Python 自动化脚本，用自然语言管理测试设备。
+4. 测试人员通过 RavenClient、DeviceAgent、Device Link、MCP Server、设备工具和 Python 自动化脚本，用自然语言管理测试设备。
 5. 测试完成后，日志提交至 RavenAIService，由 LogAnalysisAgent 分析并产出证据链、问题线索和研发回流建议。
 
 ## 研发测试流程对比
 
-没有 Agent 参与时，研发测试流程主要依赖人工交接、人工找包、手动操作设备和人工查日志：
+### 人工流程
 
-```mermaid
-%%{init: {"theme": "base", "flowchart": {"htmlLabels": true, "nodeSpacing": 24, "rankSpacing": 24, "curve": "basis"}, "themeVariables": {"fontFamily": "Arial, Microsoft YaHei", "primaryTextColor": "#0F172A", "lineColor": "#64748B"}}}%%
+[![人工研发测试流程，从代码提交和软件包交接到设备测试、日志排查与修复](Docs/raven-testing-manual.svg)](Docs/raven-testing-manual.html)
 
-flowchart LR
+### RavenAI 辅助流程
 
-A["研发提交"] --> B["写说明"]
-B --> C["传包"]
-C --> D["找包"]
-D --> E["控设备"]
-E --> F["日志散落"]
-F --> G["查日志"]
-G --> H["研发修复"]
-H --> A
-
-P1["沟通反复"] -.-> B
-P2["版本混乱"] -.-> C
-P3["门槛高"] -.-> E
-P4["定位慢"] -.-> G
-
-classDef normal fill:#F8FAFC,stroke:#64748B,stroke-width:1.3px,color:#0F172A;
-classDef manual fill:#FEF2F2,stroke:#DC2626,stroke-width:1.5px,color:#7F1D1D;
-classDef pain fill:#FFF7ED,stroke:#EA580C,stroke-width:1.3px,color:#7C2D12;
-
-class A,H normal;
-class B,C,D,E,F,G manual;
-class P1,P2,P3,P4 pain;
-```
-
-在 RavenAI 中，Agent 进入说明生成、包管理、查包、设备控制和日志分析这些关键摩擦点：
-
-```mermaid
-%%{init: {"theme": "base", "flowchart": {"htmlLabels": true, "nodeSpacing": 24, "rankSpacing": 24, "curve": "basis"}, "themeVariables": {"fontFamily": "Arial, Microsoft YaHei", "primaryTextColor": "#0F172A", "lineColor": "#475569"}}}%%
-
-flowchart LR
-
-A["研发提交"] --> B["Agent说明"]
-B --> C["Agent管包"]
-C --> D["Agent查包"]
-D --> E["Agent控设备"]
-E --> F["日志入库"]
-F --> G["Agent析日志"]
-G --> H["研发修复"]
-H --> I["AI Coding Agent"]
-I --> A
-
-V1["降沟通"] -.-> B
-V2["降交付"] -.-> C
-V3["降门槛"] -.-> E
-V4["快定位"] -.-> G
-
-classDef normal fill:#F8FAFC,stroke:#64748B,stroke-width:1.3px,color:#0F172A;
-classDef agent fill:#F5F3FF,stroke:#7C3AED,stroke-width:1.7px,color:#1E1B4B;
-classDef value fill:#ECFDF5,stroke:#059669,stroke-width:1.3px,color:#064E3B;
-classDef repair fill:#FFF7ED,stroke:#EA580C,stroke-width:1.5px,color:#7C2D12;
-
-class A,F normal;
-class B,C,D,E,G,I agent;
-class V1,V2,V3,V4,V5 value;
-class H repair;
-```
+[![RavenAI 辅助研发测试流程，展示发布说明、软件包检索、设备联动和日志分析](Docs/raven-testing-assisted.svg)](Docs/raven-testing-assisted.html)
 
 ## 技术架构概览
 
 ### 系统技术与能力结构
 
-![RavenAI 架构图](Docs/raven-architecture.svg)
+[![RavenAI 系统架构，展示 Web 与桌面入口、FastAPI、设备联动、Agent、后台任务及外部系统](Docs/raven-architecture.svg)](Docs/raven-architecture.html)
 
-- **客户端层**：`RavenClient`、Electron、React、MCP Client、包管理工具、DeviceLinkClient。
-- **AI 编排层**：基于 Claude Agent SDK 的 ChatAgent 与 LogAnalysisAgent，接入 OpenAI-compatible LLM。
-- **服务层**：`RavenAIService` 中的 FastAPI 服务、Express `package-server`，以及 Electron `update-server`。
-- **通信与任务层**：REST API、WebSocket Device Link、Celery、Redis。
-- **数据与知识层**：升级包、包元数据、日志包、数据库记录和 FAISS 向量索引。
-- **设备工具层**：MCP Server、设备接口封装和面向设备操作与测试的 Python 自动化脚本。
-
-关键架构说明：
-- **提示词分层**：Agent 级基础层（`prompts_config.yaml`）与 Project 级追加层（`data/project_prompts/<project_code>/system_prompt.md`）在运行前合并，编辑即时生效。
-- **Skill 分层（Claude Agent SDK）**：Agent 级（`data/agent_skills/<agent>/store`）与 Project 级（`data/project_skills/<project_code>/store`），运行前物化到 `.claude/skills/`。
-- **Service ⇄ Client 反向穿透**：客户端主动外连 WS 到 `Service:8085/ws/device-link`；心跳 ping/pong + 指数退避重连；设备侧无需公网入站端口。
-- **代码库安全接入**：LogAnalysis / BugFix / ProjectExpert Agent 经 SSH Key / Token 认证访问代码库，克隆为只读副本。
+- **客户端层**采用 Electron 和 React，提供包工具、MCP 客户端和 Chaterm SSH 终端。Vue Web 控制台提供运维和管理入口。
+- **服务层**通过 FastAPI 提供对话、日志暂存和软件包管理，使用 Celery 与 Redis 处理后台日志分析和缺陷修复任务。
+- **Agent 运行时**基于 Claude Agent SDK，模型路由支持 Anthropic 兼容接口和 OpenAI Responses 等模型接入方式。
+- **设备联动**由 RavenClient 主动连接服务端 `8085` 端口的 `/ws/device-link`，通过心跳维持连接并在断线后重连。设备操作可使用 MCP、SSH 或 Python 自动化工具。
+- **项目数据**包括软件包及其元数据、日志归档和任务记录。需要源码上下文的 Agent 使用所选项目配置的凭据访问仓库。
 
 ### Agent 上下文分层与装配
 
-![RavenAI Agent 上下文](Docs/raven-agent-context.svg)
+[![Agent 和项目两级配置进入运行前装配，生成提示词、Skill 和任务所需的工作区](Docs/raven-agent-context.svg)](Docs/raven-agent-context.html)
 
-每次 Agent 运行前，从两个层次组装上下文：
-
-- **Agent 级（基础层）**：按 agent 名称选取，跨所有项目共享。提示词来自 `prompts_config.yaml`（`claude_agent_<name>`，按 zh/en locale 选择），Skill 来自 `data/agent_skills/<agent>/store`（由 `_registry.json` 控制启用）。
-- **Project 级（追加层）**：按 `project_code` 隔离，用户在前端选定项目后生效。提示词来自 `project_prompts/<code>/system_prompt.md`（编辑即时生效），Skill 来自 `project_skills/<code>/store`（与 Agent Skill 平行；同名则覆盖 Agent 级）。
-- **运行前组装**：最终系统提示词 = base + 项目追加段 + 回复语言指令；Skill 物化到 `.claude/skills/`（Agent Skill 先放入，项目级同名覆盖）；代码库 `git clone` 到 `<workspace>/repo/`（已有则复用 `.git`）。
-- **工作区 `<workspace>/`**：包含合成后的 `system_prompt`、`.claude/skills/<name>/`、`repo/`（只读：Read/Grep/Glob/Bash/git）和 `task.json + logs/`。
+- **Agent 级默认配置**来自 `prompts_config.yaml` 和 `data/agent_skills/<agent>/store` 中已启用的 Skill。
+- **项目级输入**按 `project_code` 隔离。支持项目上下文的 Agent 会追加 `data/project_prompts/<project_code>/system_prompt.md` 的内容。同名 Skill 以项目级为准。
+- **运行前组装**把合成后的提示词传入运行时，将适用的 Skill 写入 `.claude/skills/`。源码仓库的克隆或复用、`task.json` 和 `logs/` 取决于 Agent 和任务类型。
+- **仓库访问**按任务区分。项目专家和日志分析使用工作区副本查阅源码，独立的缺陷修复任务可以准备并推送修复分支，交由人工评审。
 
 ## 仓库结构
 
@@ -138,8 +66,7 @@ RavenAI/
 ├── RavenClient/                 # 桌面客户端、包工具、MCP 与设备联动流程
 ├── RavenAIService/              # 后端服务、日志暂存、AI 分析、包管理服务
 │   ├── app/                     # FastAPI 应用、agents、services、tasks
-│   ├── frontend/                # 服务侧 Web 前端
-│   └── package-server/          # Express 包管理与 RAG 检索服务
+│   └── frontend/                # 服务侧 Web 前端
 ├── Docs/                        # 项目文档与功能说明
 ├── .gitmodules                  # 子模块定义
 └── README.md                    # 默认英文说明文档
@@ -170,14 +97,6 @@ pip install -r requirements.txt
 uvicorn app.main:app --host 0.0.0.0 --port 8085 --reload
 ```
 
-启动包管理服务：
-
-```bash
-cd RavenAIService/package-server
-npm install
-npm run dev
-```
-
 启动桌面客户端：
 
 ```bash
@@ -189,7 +108,7 @@ yarn dev
 ## 关键服务
 
 - RavenAIService API：`http://localhost:8085`
-- 包管理服务：`http://localhost:8083/raven`
+- 软件包列表 API 位于 `http://localhost:8085/raven/api/packages`
 - 更新服务：`RavenClient/update-server`
 - 桌面客户端：通过 `yarn dev` 启动 Electron
 

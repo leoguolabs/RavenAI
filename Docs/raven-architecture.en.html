@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RavenAI system architecture · RavenAI</title>
+  <style>
+    body { margin: 0; padding: 24px; background: #FDFBF7; }
+    main { margin-inline: auto; max-width: 960px; }
+    .diagram-container { overflow-x: auto; }
+    .diagram-container:focus-visible { outline: 2px solid #80601B; outline-offset: 2px; }
+    svg { display: block; width: 100%; height: auto; min-width: 960px; }
+    @media (max-width: 640px) { body { padding: 8px; } }
+    @media print {
+      body { padding: 0; }
+      .diagram-container { overflow-x: visible; }
+      svg { min-width: 0; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="diagram-container" tabindex="0" role="region" aria-label="RavenAI system architecture">
+    <svg viewBox="0 0 960 600" width="960" height="600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="raven-architecture.en-title raven-architecture.en-desc" font-family="'Geist', 'Inter', system-ui, 'PingFang SC', 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif" fill="#1A4A3A">
+      <title id="raven-architecture.en-title">RavenAI system architecture</title>
+      <desc id="raven-architecture.en-desc">Vue and Electron clients reach FastAPI by REST or Device Link; the service runs agents and Celery jobs with access to models, data and Git.</desc>
+      <defs>
+        <style>
+      .paper { fill: #FDFBF7; }
+      .section { fill: #F7F6EF; stroke: #D5DDD1; }
+      .box { fill: #FDFBF7; stroke: #B7C4B7; }
+      .focal { fill: #F6EDCF; stroke: #80601B; }
+      .external { fill: #FDFBF7; stroke: #426454; stroke-dasharray: 4 3; }
+      .line { stroke: #D5DDD1; }
+      .heading { font-size: 28px; font-weight: 600; }
+      .label { font-size: 14px; font-weight: 600; }
+      .name { font-size: 12px; font-weight: 600; }
+      .body { font-size: 12px; fill: #426454; }
+      .figure-kicker { font-size: 10px; font-weight: 600; letter-spacing: .10em; fill: #426454; }
+      .meta { font-size: 11px; fill: #426454; }
+      .code { font: 9px 'Geist Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace; fill: #426454; }
+      .gold { fill: #80601B; }
+      .route-label { font-size: 8px; font-weight: 600; letter-spacing: .08em; fill: #426454; }
+      .route-label-zh { font-size: 12px; font-weight: 600; fill: #426454; }
+      .arrow { stroke: #426454; stroke-width: 1.25; fill: none; }
+      .dashed { stroke-dasharray: 5 4; }
+    </style>
+        <pattern id="raven-architecture.en-grain" width="19" height="23" patternUnits="userSpaceOnUse">
+          <path d="M 3 4 h 1 M 13 17 h 1" stroke="#426454" stroke-opacity=".045" stroke-width=".6"/>
+        </pattern>
+        <marker id="raven-architecture.en-arrow" viewBox="0 0 8 6" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto" markerUnits="userSpaceOnUse">
+          <path d="M 0 0 L 8 3 L 0 6 Z" fill="#426454"/>
+        </marker>
+      </defs>
+      <rect x="0" y="0" width="960" height="600" rx="0" class="paper"/>
+      <rect width="960" height="600" fill="url(#raven-architecture.en-grain)"/>
+      <text x="40" y="47" class="figure-kicker" text-anchor="start">System overview</text>
+      <text x="920" y="47" class="figure-kicker" text-anchor="end">RavenAI  /  03</text>
+      <text x="40" y="83" class="heading" text-anchor="start">RavenAI system architecture</text>
+      <text x="40" y="111" class="body" text-anchor="start">Desktop and web clients connect to RavenAIService, which runs agents and queues background jobs.</text>
+      <line x1="40" y1="132" x2="920" y2="132" class="line"/>
+      <rect x="40" y="152" width="288" height="228" rx="8" class="section"/>
+      <rect x="432" y="152" width="488" height="320" rx="8" class="section"/>
+      <text x="56" y="179" class="label" text-anchor="start">Client interfaces</text>
+      <text x="448" y="179" class="label" text-anchor="start">RavenAIService</text>
+      <path d="M 312 248 H 448" class="arrow" marker-end="url(#raven-architecture.en-arrow)"/>
+      <path d="M 312 304 H 448" class="arrow" marker-end="url(#raven-architecture.en-arrow)"/>
+      <path d="M 184 360 V 496" class="arrow" marker-end="url(#raven-architecture.en-arrow)"/>
+      <path d="M 561.33 360 V 392" class="arrow" marker-end="url(#raven-architecture.en-arrow)"/>
+      <path d="M 718.67 360 V 364 Q 718.67 372 726.67 372 H 808 Q 816 372 816 380 V 392" class="arrow dashed" marker-end="url(#raven-architecture.en-arrow)"/>
+      <path d="M 728 424 H 704" class="arrow dashed" marker-end="url(#raven-architecture.en-arrow)"/>
+      <path d="M 533.33 456 V 496" class="arrow" marker-end="url(#raven-architecture.en-arrow)"/>
+      <path d="M 618.67 456 V 472 Q 618.67 480 626.67 480 H 752 Q 760 480 760 488 V 496" class="arrow" marker-end="url(#raven-architecture.en-arrow)"/>
+      <rect x="348" y="227" width="64" height="12" rx="0" class="paper"/>
+      <text x="380" y="236" class="route-label" text-anchor="middle">REST</text>
+      <rect x="332" y="283" width="96" height="12" rx="0" class="paper"/>
+      <text x="380" y="292" class="route-label" text-anchor="middle">WS OUTBOUND</text>
+      <rect x="192" y="416" width="104" height="32" rx="0" class="paper"/>
+      <text x="198" y="429" class="route-label" text-anchor="start">MCP / SSH</text>
+      <text x="198" y="443" class="route-label" text-anchor="start">DEVICE TOOLS</text>
+      <rect x="56" y="224" width="256" height="48" rx="6" class="box"/>
+      <text x="72" y="246" class="name" text-anchor="start">Web console</text>
+      <text x="72" y="264" class="body" text-anchor="start">Vue · operations and administration</text>
+      <rect x="56" y="296" width="256" height="64" rx="6" class="box"/>
+      <text x="72" y="318" class="name" text-anchor="start">RavenClient</text>
+      <text x="72" y="336" class="body" text-anchor="start">Electron / React · MCP Client</text>
+      <text x="72" y="351" class="code" text-anchor="start">Chaterm SSH · DeviceLinkClient</text>
+      <rect x="448" y="192" width="456" height="168" rx="6" class="focal"/>
+      <text x="464" y="217" class="label" text-anchor="start">FastAPI service</text>
+      <text x="464" y="243" class="body" text-anchor="start">REST · chat, log staging, package management</text>
+      <text x="464" y="260" class="code" text-anchor="start">/api/v1/ai-chat  ·  /api/v1/logs  ·  /raven/api</text>
+      <line x1="464" y1="276" x2="888" y2="276" class="line"/>
+      <text x="464" y="300" class="name" text-anchor="start">Device Link · reverse tunnel</text>
+      <text x="464" y="318" class="code" text-anchor="start">/ws/device-link  ·  :8085</text>
+      <text x="464" y="341" class="body" text-anchor="start">Heartbeat and reconnect · no inbound device-side port</text>
+      <rect x="448" y="392" width="256" height="64" rx="6" class="box"/>
+      <text x="464" y="414" class="name" text-anchor="start">Agent runtime</text>
+      <text x="464" y="432" class="code" text-anchor="start">Claude Agent SDK</text>
+      <text x="464" y="447" class="body" text-anchor="start">Project context · model routing</text>
+      <rect x="728" y="392" width="176" height="64" rx="6" class="box"/>
+      <text x="744" y="414" class="name" text-anchor="start">Background jobs</text>
+      <text x="744" y="432" class="code" text-anchor="start">Celery + Redis</text>
+      <text x="744" y="447" class="body" text-anchor="start">Log analysis · bug fix</text>
+      <rect x="56" y="496" width="256" height="56" rx="6" class="external"/>
+      <text x="72" y="518" class="name" text-anchor="start">Devices under test</text>
+      <text x="72" y="536" class="body" text-anchor="start">MCP servers · SSH · Python tools</text>
+      <rect x="448" y="496" width="172" height="56" rx="6" class="external"/>
+      <text x="464" y="518" class="name" text-anchor="start">Model providers</text>
+      <text x="464" y="536" class="code" text-anchor="start">Anthropic · OpenAI Responses</text>
+      <rect x="648" y="496" width="256" height="56" rx="6" class="box"/>
+      <text x="664" y="518" class="name" text-anchor="start">Project data &amp; Git</text>
+      <text x="664" y="536" class="body" text-anchor="start">Packages, logs, records and repositories</text>
+      <line x1="40" y1="564" x2="920" y2="564" class="line"/>
+      <text x="40" y="583" class="meta" text-anchor="start">Solid arrow  ·  Request or access</text>
+      <text x="920" y="583" class="meta" text-anchor="end">Dashed arrow  ·  Async work    /    Dashed box  ·  External system</text>
+    </svg>
+    </div>
+  </main>
+</body>
+</html>

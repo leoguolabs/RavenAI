@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 960 600" width="960" height="600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="raven-testing-manual-title raven-testing-manual-desc" font-family="'Geist', 'Inter', system-ui, 'PingFang SC', 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif" fill="#1A4A3A" id="raven-testing-manual-root">
+      <title id="raven-testing-manual-title">人工研发测试</title>
+      <desc id="raven-testing-manual-desc">八个步骤串联代码提交、发布说明、软件包交接、设备测试和日志分析，再回到研发修复。</desc>
+      <defs>
+      <style>#raven-testing-manual-root .diagram-container { overflow-x: auto; }
+      #raven-testing-manual-root .diagram-container:focus-visible { outline: 2px solid #80601B; outline-offset: 2px; }
+      #raven-testing-manual-root .diagram-container { overflow-x: visible; }
+      #raven-testing-manual-root .paper { fill: #FDFBF7; }
+      #raven-testing-manual-root .section { fill: #F7F6EF; stroke: #D5DDD1; }
+      #raven-testing-manual-root .box { fill: #FDFBF7; stroke: #B7C4B7; }
+      #raven-testing-manual-root .focal { fill: #F6EDCF; stroke: #80601B; }
+      #raven-testing-manual-root .external { fill: #FDFBF7; stroke: #426454; stroke-dasharray: 4 3; }
+      #raven-testing-manual-root .line { stroke: #D5DDD1; }
+      #raven-testing-manual-root .heading { font-size: 28px; font-weight: 600; }
+      #raven-testing-manual-root .label { font-size: 14px; font-weight: 600; }
+      #raven-testing-manual-root .name { font-size: 12px; font-weight: 600; }
+      #raven-testing-manual-root .body { font-size: 12px; fill: #426454; }
+      #raven-testing-manual-root .figure-kicker { font-size: 10px; font-weight: 600; letter-spacing: .10em; fill: #426454; }
+      #raven-testing-manual-root .meta { font-size: 11px; fill: #426454; }
+      #raven-testing-manual-root .code { font: 9px 'Geist Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace; fill: #426454; }
+      #raven-testing-manual-root .gold { fill: #80601B; }
+      #raven-testing-manual-root .route-label { font-size: 8px; font-weight: 600; letter-spacing: .08em; fill: #426454; }
+      #raven-testing-manual-root .route-label-zh { font-size: 12px; font-weight: 600; fill: #426454; }
+      #raven-testing-manual-root .arrow { stroke: #426454; stroke-width: 1.25; fill: none; }
+      #raven-testing-manual-root .dashed { stroke-dasharray: 5 4; }</style>
+        <style>
+      .paper { fill: #FDFBF7; }
+      .section { fill: #F7F6EF; stroke: #D5DDD1; }
+      .box { fill: #FDFBF7; stroke: #B7C4B7; }
+      .focal { fill: #F6EDCF; stroke: #80601B; }
+      .external { fill: #FDFBF7; stroke: #426454; stroke-dasharray: 4 3; }
+      .line { stroke: #D5DDD1; }
+      .heading { font-size: 28px; font-weight: 600; }
+      .label { font-size: 14px; font-weight: 600; }
+      .name { font-size: 12px; font-weight: 600; }
+      .body { font-size: 12px; fill: #426454; }
+      .figure-kicker { font-size: 10px; font-weight: 600; letter-spacing: .10em; fill: #426454; }
+      .meta { font-size: 11px; fill: #426454; }
+      .code { font: 9px 'Geist Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace; fill: #426454; }
+      .gold { fill: #80601B; }
+      .route-label { font-size: 8px; font-weight: 600; letter-spacing: .08em; fill: #426454; }
+      .route-label-zh { font-size: 12px; font-weight: 600; fill: #426454; }
+      .arrow { stroke: #426454; stroke-width: 1.25; fill: none; }
+      .dashed { stroke-dasharray: 5 4; }
+    </style>
+        <pattern id="raven-testing-manual-raven-testing-manual-grain" width="19" height="23" patternUnits="userSpaceOnUse">
+          <path d="M 3 4 h 1 M 13 17 h 1" stroke="#426454" stroke-opacity=".045" stroke-width=".6"/>
+        </pattern>
+        <marker id="raven-testing-manual-raven-testing-manual-arrow" viewBox="0 0 8 6" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto" markerUnits="userSpaceOnUse">
+          <path d="M 0 0 L 8 3 L 0 6 Z" fill="#426454"/>
+        </marker>
+      </defs>
+      <rect x="0" y="0" width="960" height="600" rx="0" class="paper"/>
+      <rect width="960" height="600" fill="url(#raven-testing-manual-raven-testing-manual-grain)"/>
+      <text x="40" y="47" class="figure-kicker" text-anchor="start">研发测试流程</text>
+      <text x="920" y="47" class="figure-kicker" text-anchor="end">RavenAI  /  01</text>
+      <text x="40" y="83" class="heading" text-anchor="start">人工研发测试</text>
+      <text x="40" y="111" class="body" text-anchor="start">测试人员手动核对版本、操作设备和排查日志。</text>
+      <line x1="40" y1="132" x2="920" y2="132" class="line"/>
+      <text x="40" y="170" class="label" text-anchor="start">01–04   准备测试版本</text>
+      <text x="792" y="342" class="label" text-anchor="end">05–08   测试与反馈</text>
+      <path d="M 236 236 H 268" class="arrow" marker-end="url(#raven-testing-manual-raven-testing-manual-arrow)"/>
+      <path d="M 268 408 H 236" class="arrow" marker-end="url(#raven-testing-manual-raven-testing-manual-arrow)"/>
+      <path d="M 464 236 H 496" class="arrow" marker-end="url(#raven-testing-manual-raven-testing-manual-arrow)"/>
+      <path d="M 496 408 H 464" class="arrow" marker-end="url(#raven-testing-manual-raven-testing-manual-arrow)"/>
+      <path d="M 692 236 H 724" class="arrow" marker-end="url(#raven-testing-manual-raven-testing-manual-arrow)"/>
+      <path d="M 724 408 H 692" class="arrow" marker-end="url(#raven-testing-manual-raven-testing-manual-arrow)"/>
+      <path d="M 822 284 V 360" class="arrow" marker-end="url(#raven-testing-manual-raven-testing-manual-arrow)"/>
+      <path d="M 138 360 V 284" class="arrow dashed" marker-end="url(#raven-testing-manual-raven-testing-manual-arrow)"/>
+      <rect x="148" y="313" width="108" height="16" rx="0" class="paper"/>
+      <text x="202" y="326" class="route-label-zh" text-anchor="middle">进入下一轮</text>
+      <rect x="40" y="188" width="196" height="96" rx="6" class="box"/>
+      <text x="56" y="212" class="figure-kicker" text-anchor="start">01</text>
+      <text x="56" y="239" class="name" text-anchor="start">提交代码</text>
+      <text x="56" y="261" class="body" text-anchor="start">研发提交版本变更</text>
+      <rect x="268" y="188" width="196" height="96" rx="6" class="box"/>
+      <text x="284" y="212" class="figure-kicker" text-anchor="start">02</text>
+      <text x="284" y="239" class="name" text-anchor="start">手写发布说明</text>
+      <text x="284" y="261" class="body" text-anchor="start">反复沟通变更内容</text>
+      <rect x="496" y="188" width="196" height="96" rx="6" class="box"/>
+      <text x="512" y="212" class="figure-kicker" text-anchor="start">03</text>
+      <text x="512" y="239" class="name" text-anchor="start">交接软件包</text>
+      <text x="512" y="261" class="body" text-anchor="start">容易交错版本</text>
+      <rect x="724" y="188" width="196" height="96" rx="6" class="box"/>
+      <text x="740" y="212" class="figure-kicker" text-anchor="start">04</text>
+      <text x="740" y="239" class="name" text-anchor="start">查找软件包</text>
+      <text x="740" y="261" class="body" text-anchor="start">测试人员核对构建版本</text>
+      <rect x="724" y="360" width="196" height="96" rx="6" class="box"/>
+      <text x="740" y="384" class="figure-kicker" text-anchor="start">05</text>
+      <text x="740" y="411" class="name" text-anchor="start">手动操作设备</text>
+      <text x="740" y="433" class="body" text-anchor="start">依赖设备操作经验</text>
+      <rect x="496" y="360" width="196" height="96" rx="6" class="box"/>
+      <text x="512" y="384" class="figure-kicker" text-anchor="start">06</text>
+      <text x="512" y="411" class="name" text-anchor="start">收集分散日志</text>
+      <text x="512" y="433" class="body" text-anchor="start">手工汇集多处日志</text>
+      <rect x="268" y="360" width="196" height="96" rx="6" class="box"/>
+      <text x="284" y="384" class="figure-kicker" text-anchor="start">07</text>
+      <text x="284" y="411" class="name" text-anchor="start">人工排查日志</text>
+      <text x="284" y="433" class="body" text-anchor="start">故障定位耗时</text>
+      <rect x="40" y="360" width="196" height="96" rx="6" class="box"/>
+      <text x="56" y="384" class="figure-kicker" text-anchor="start">08</text>
+      <text x="56" y="411" class="name" text-anchor="start">修复问题</text>
+      <text x="56" y="433" class="body" text-anchor="start">研发人员准备修复</text>
+      <line x1="40" y1="488" x2="920" y2="488" class="line"/>
+      <text x="40" y="519" class="label" text-anchor="start">软件包交接</text>
+      <text x="40" y="541" class="body" text-anchor="start">研发和测试人员需要确认实际使用的构建版本。</text>
+      <text x="488" y="519" class="label" text-anchor="start">故障定位</text>
+      <text x="488" y="541" class="body" text-anchor="start">测试人员需要从分散的日志中还原问题。</text>
+      <line x1="40" y1="564" x2="920" y2="564" class="line"/>
+      <text x="40" y="583" class="meta" text-anchor="start">实线箭头  ·  下一步</text>
+      <text x="920" y="583" class="meta" text-anchor="end">虚线箭头  ·  修复后进入下一次提交</text>
+    </svg>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 960 600" width="960" height="600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="raven-testing-manual.en-title raven-testing-manual.en-desc" font-family="'Geist', 'Inter', system-ui, 'PingFang SC', 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif" fill="#1A4A3A" id="raven-testing-manual-en-root">
+      <title id="raven-testing-manual.en-title">Manual R&amp;D testing</title>
+      <desc id="raven-testing-manual.en-desc">Eight steps take a code change through release notes, package handoff, device testing, log analysis and back to development.</desc>
+      <defs>
+      <style>#raven-testing-manual-en-root .diagram-container { overflow-x: auto; }
+      #raven-testing-manual-en-root .diagram-container:focus-visible { outline: 2px solid #80601B; outline-offset: 2px; }
+      #raven-testing-manual-en-root .diagram-container { overflow-x: visible; }
+      #raven-testing-manual-en-root .paper { fill: #FDFBF7; }
+      #raven-testing-manual-en-root .section { fill: #F7F6EF; stroke: #D5DDD1; }
+      #raven-testing-manual-en-root .box { fill: #FDFBF7; stroke: #B7C4B7; }
+      #raven-testing-manual-en-root .focal { fill: #F6EDCF; stroke: #80601B; }
+      #raven-testing-manual-en-root .external { fill: #FDFBF7; stroke: #426454; stroke-dasharray: 4 3; }
+      #raven-testing-manual-en-root .line { stroke: #D5DDD1; }
+      #raven-testing-manual-en-root .heading { font-size: 28px; font-weight: 600; }
+      #raven-testing-manual-en-root .label { font-size: 14px; font-weight: 600; }
+      #raven-testing-manual-en-root .name { font-size: 12px; font-weight: 600; }
+      #raven-testing-manual-en-root .body { font-size: 12px; fill: #426454; }
+      #raven-testing-manual-en-root .figure-kicker { font-size: 10px; font-weight: 600; letter-spacing: .10em; fill: #426454; }
+      #raven-testing-manual-en-root .meta { font-size: 11px; fill: #426454; }
+      #raven-testing-manual-en-root .code { font: 9px 'Geist Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace; fill: #426454; }
+      #raven-testing-manual-en-root .gold { fill: #80601B; }
+      #raven-testing-manual-en-root .route-label { font-size: 8px; font-weight: 600; letter-spacing: .08em; fill: #426454; }
+      #raven-testing-manual-en-root .route-label-zh { font-size: 12px; font-weight: 600; fill: #426454; }
+      #raven-testing-manual-en-root .arrow { stroke: #426454; stroke-width: 1.25; fill: none; }
+      #raven-testing-manual-en-root .dashed { stroke-dasharray: 5 4; }</style>
+        <style>
+      .paper { fill: #FDFBF7; }
+      .section { fill: #F7F6EF; stroke: #D5DDD1; }
+      .box { fill: #FDFBF7; stroke: #B7C4B7; }
+      .focal { fill: #F6EDCF; stroke: #80601B; }
+      .external { fill: #FDFBF7; stroke: #426454; stroke-dasharray: 4 3; }
+      .line { stroke: #D5DDD1; }
+      .heading { font-size: 28px; font-weight: 600; }
+      .label { font-size: 14px; font-weight: 600; }
+      .name { font-size: 12px; font-weight: 600; }
+      .body { font-size: 12px; fill: #426454; }
+      .figure-kicker { font-size: 10px; font-weight: 600; letter-spacing: .10em; fill: #426454; }
+      .meta { font-size: 11px; fill: #426454; }
+      .code { font: 9px 'Geist Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace; fill: #426454; }
+      .gold { fill: #80601B; }
+      .route-label { font-size: 8px; font-weight: 600; letter-spacing: .08em; fill: #426454; }
+      .route-label-zh { font-size: 12px; font-weight: 600; fill: #426454; }
+      .arrow { stroke: #426454; stroke-width: 1.25; fill: none; }
+      .dashed { stroke-dasharray: 5 4; }
+    </style>
+        <pattern id="raven-testing-manual-en-raven-testing-manual.en-grain" width="19" height="23" patternUnits="userSpaceOnUse">
+          <path d="M 3 4 h 1 M 13 17 h 1" stroke="#426454" stroke-opacity=".045" stroke-width=".6"/>
+        </pattern>
+        <marker id="raven-testing-manual-en-raven-testing-manual.en-arrow" viewBox="0 0 8 6" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto" markerUnits="userSpaceOnUse">
+          <path d="M 0 0 L 8 3 L 0 6 Z" fill="#426454"/>
+        </marker>
+      </defs>
+      <rect x="0" y="0" width="960" height="600" rx="0" class="paper"/>
+      <rect width="960" height="600" fill="url(#raven-testing-manual-en-raven-testing-manual.en-grain)"/>
+      <text x="40" y="47" class="figure-kicker" text-anchor="start">R&amp;D testing workflow</text>
+      <text x="920" y="47" class="figure-kicker" text-anchor="end">RavenAI  /  01</text>
+      <text x="40" y="83" class="heading" text-anchor="start">Manual R&amp;D testing</text>
+      <text x="40" y="111" class="body" text-anchor="start">Testers coordinate versions, operate devices and inspect logs by hand.</text>
+      <line x1="40" y1="132" x2="920" y2="132" class="line"/>
+      <text x="40" y="170" class="label" text-anchor="start">01–04   Prepare the release</text>
+      <text x="792" y="342" class="label" text-anchor="end">05–08   Test and feed back</text>
+      <path d="M 236 236 H 268" class="arrow" marker-end="url(#raven-testing-manual-en-raven-testing-manual.en-arrow)"/>
+      <path d="M 268 408 H 236" class="arrow" marker-end="url(#raven-testing-manual-en-raven-testing-manual.en-arrow)"/>
+      <path d="M 464 236 H 496" class="arrow" marker-end="url(#raven-testing-manual-en-raven-testing-manual.en-arrow)"/>
+      <path d="M 496 408 H 464" class="arrow" marker-end="url(#raven-testing-manual-en-raven-testing-manual.en-arrow)"/>
+      <path d="M 692 236 H 724" class="arrow" marker-end="url(#raven-testing-manual-en-raven-testing-manual.en-arrow)"/>
+      <path d="M 724 408 H 692" class="arrow" marker-end="url(#raven-testing-manual-en-raven-testing-manual.en-arrow)"/>
+      <path d="M 822 284 V 360" class="arrow" marker-end="url(#raven-testing-manual-en-raven-testing-manual.en-arrow)"/>
+      <path d="M 138 360 V 284" class="arrow dashed" marker-end="url(#raven-testing-manual-en-raven-testing-manual.en-arrow)"/>
+      <rect x="148" y="317" width="108" height="12" rx="0" class="paper"/>
+      <text x="202" y="326" class="route-label" text-anchor="middle">NEXT ITERATION</text>
+      <rect x="40" y="188" width="196" height="96" rx="6" class="box"/>
+      <text x="56" y="212" class="figure-kicker" text-anchor="start">01</text>
+      <text x="56" y="239" class="name" text-anchor="start">Commit code</text>
+      <text x="56" y="261" class="body" text-anchor="start">Developer pushes a change</text>
+      <rect x="268" y="188" width="196" height="96" rx="6" class="box"/>
+      <text x="284" y="212" class="figure-kicker" text-anchor="start">02</text>
+      <text x="284" y="239" class="name" text-anchor="start">Write release notes</text>
+      <text x="284" y="261" class="body" text-anchor="start">Back-and-forth clarification</text>
+      <rect x="496" y="188" width="196" height="96" rx="6" class="box"/>
+      <text x="512" y="212" class="figure-kicker" text-anchor="start">03</text>
+      <text x="512" y="239" class="name" text-anchor="start">Hand off the package</text>
+      <text x="512" y="261" class="body" text-anchor="start">Risk of version drift</text>
+      <rect x="724" y="188" width="196" height="96" rx="6" class="box"/>
+      <text x="740" y="212" class="figure-kicker" text-anchor="start">04</text>
+      <text x="740" y="239" class="name" text-anchor="start">Find the package</text>
+      <text x="740" y="261" class="body" text-anchor="start">Tester locates the right build</text>
+      <rect x="724" y="360" width="196" height="96" rx="6" class="box"/>
+      <text x="740" y="384" class="figure-kicker" text-anchor="start">05</text>
+      <text x="740" y="411" class="name" text-anchor="start">Operate test devices</text>
+      <text x="740" y="433" class="body" text-anchor="start">Requires device expertise</text>
+      <rect x="496" y="360" width="196" height="96" rx="6" class="box"/>
+      <text x="512" y="384" class="figure-kicker" text-anchor="start">06</text>
+      <text x="512" y="411" class="name" text-anchor="start">Collect scattered logs</text>
+      <text x="512" y="433" class="body" text-anchor="start">Pull logs from each source</text>
+      <rect x="268" y="360" width="196" height="96" rx="6" class="box"/>
+      <text x="284" y="384" class="figure-kicker" text-anchor="start">07</text>
+      <text x="284" y="411" class="name" text-anchor="start">Inspect logs manually</text>
+      <text x="284" y="433" class="body" text-anchor="start">Slow fault isolation</text>
+      <rect x="40" y="360" width="196" height="96" rx="6" class="box"/>
+      <text x="56" y="384" class="figure-kicker" text-anchor="start">08</text>
+      <text x="56" y="411" class="name" text-anchor="start">Fix the issue</text>
+      <text x="56" y="433" class="body" text-anchor="start">Developer prepares the fix</text>
+      <line x1="40" y1="488" x2="920" y2="488" class="line"/>
+      <text x="40" y="519" class="label" text-anchor="start">Package handoff</text>
+      <text x="40" y="541" class="body" text-anchor="start">People reconcile which build should be tested.</text>
+      <text x="488" y="519" class="label" text-anchor="start">Diagnosis</text>
+      <text x="488" y="541" class="body" text-anchor="start">Test evidence has to be assembled from separate logs.</text>
+      <line x1="40" y1="564" x2="920" y2="564" class="line"/>
+      <text x="40" y="583" class="meta" text-anchor="start">Solid arrow  ·  Next step</text>
+      <text x="920" y="583" class="meta" text-anchor="end">Dashed arrow  ·  Feedback to the next commit</text>
+    </svg>
