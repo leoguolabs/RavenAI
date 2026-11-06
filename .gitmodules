@@ -1,9 +1,9 @@
 [submodule "RavenAIService"]
 	path = RavenAIService
-	url = git@github.com:visiontrail/RavenAIService.git
+	url = git@github.com:leoguolabs/RavenAIService.git
 	branch = main
 
 [submodule "RavenClient"]
 	path = RavenClient
-	url = git@github.com:visiontrail/RavenClient.git
+	url = git@github.com:leoguolabs/RavenClient.git
 	branch = Raven-main
